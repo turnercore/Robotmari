@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn6ky3bqaparn"]
+
+[ext_resource type="Script" path="res://scripts/magnetic_object.gd" id="1_wwt6u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_elky1"]
+
+[node name="Magnetic Object" type="RigidBody3D"]
+script = ExtResource("1_wwt6u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81334e-05, 0, -0.00457466)
+shape = SubResource("CapsuleShape3D_elky1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00317383, 0, 0)
+size = Vector3(1.00635, 1, 1)

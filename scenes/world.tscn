@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ytyax8uujae0"]
+
+[ext_resource type="PackedScene" uid="uid://bn6ky3bqaparn" path="res://scenes/magnetic_object.tscn" id="1_42mab"]
+[ext_resource type="PackedScene" uid="uid://kepyd34rmcia" path="res://scenes/player.tscn" id="2_xomrq"]
+
+[sub_resource type="Environment" id="Environment_q7nfy"]
+background_mode = 3
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 4.0
+ssr_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rrfhf"]
+
+[sub_resource type="Compositor" id="Compositor_ilxsc"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7yqex"]
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q7nfy")
+camera_attributes = SubResource("CameraAttributesPractical_rrfhf")
+compositor = SubResource("Compositor_ilxsc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.0408245, 0.299057, -0.953361, 0.0127944, 0.954235, 0.298784, 0.999084, 0, -0.0427824, -2.02886, 21.9611, -0.773092)
+light_energy = 16.0
+light_indirect_energy = 6.899
+omni_range = 30.442
+
+[node name="Magnetic Object" parent="." instance=ExtResource("1_42mab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.10276, 0.938634, -1.44749)
+
+[node name="Test Player" parent="." instance=ExtResource("2_xomrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03387, 1.56094, 2.93696)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0191474, 4.76837e-07, 0.0067234)
+shape = SubResource("WorldBoundaryShape3D_7yqex")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146439, -0.486557, 0.00634766)
+size = Vector3(20.0578, 1, 19.6943)
