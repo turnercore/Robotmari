@@ -3,6 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("Hi I'm battery. I'm excited to see you.")
 	pass # Replace with function body.
 
 
